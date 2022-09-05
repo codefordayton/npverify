@@ -1,30 +1,18 @@
 {% extends "main/base.html" %}
 {% block content %}
     {% include "main/components/header.html" %}
-    {% if nonprofits %}
-        {% for nonprofit in nonprofits %}
-            <p>{{nonprofit.name}}</p>
-            <p>EIN: {{nonprofit.ein}}</p>
-            <p>City: {{nonprofit.city}}</p>
-            <a href="https://www.google.com/search?q={{nonprofit.name|urlencode}}+{{nonprofit.city}}">Google Search</a>
-            <a href="https://www.facebook.com/search/top?q={{nonprofit.name|urlencode}}+{{nonprofit.city}}">Facebook Search</a>
-            <form action="{% url 'review' nonprofit_id=nonprofit.id %}" method="post">
-                {% csrf_token %}
-                <fieldset>
-                    <p>Found Website?</p>
-                    <checkbox name="found_website"/>
-                    <p>Found Facebook?</p>
-                    <checkbox name="found_facebook"/>
-                    <p>Found Contact Info?</p>
-                    <p>Do they need volunteers?</p>
-                    <p>Comments</p>
-                    <p>Please Review</p>
-                </fieldset>
-                <input type="submit" value="Review">
-            </form>
-        {% endfor %}
-    {% else %}
-        <p>No items available</p>
+    <h1>Nonprofit Verifier</h1>
+    <p>TL;DR - Spend less than 5 minutes to verify if a Dayton area nonprofit needs volunteers</p>
+    {% if nonprofit %}
+    <a href="{% url 'detail' nonprofit.id %}">Try one!</a>
     {% endif %}
+    <p>Code For Dayton is partnering with DaytonServes to make it easier to match nonprofits with volunteers. There are literally thousands of nonprofits in the Dayton area. A small percent of them want external volunteers. The primary purpose of this site is to find them so that we can highlight them.</p>
+    <p>A secondary purpose of the site is to find where <em>Code For Dayton</em> can help. We want to identify those nonprofits that need support in the form of websites, social media, etc.</p>
+    <p>The process of verifying a nonprofit is simple. You'll perform a search and capture your results. Most nonprofits will probably take a minute or less.</p>
+    <p>Thank you in advance for your help!</p>
+    {% if nonprofit %}
+    <a href="{% url 'detail' nonprofit.id %}">Try one!</a>
+    {% endif %}
+
     {% include "main/components/footer.html" %}
 {% endblock %}

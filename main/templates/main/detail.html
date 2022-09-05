@@ -1,0 +1,34 @@
+{% extends "main/base.html" %}
+{% block content %}
+{% include "main/components/header.html" %}
+    <form action="{% url 'review' nonprofit_id=nonprofit.id %}" method="post">
+    {% csrf_token %}
+    <div class="nonprofitdetails">
+        <p>{{nonprofit.name}}</p>
+        <p>EIN: {{nonprofit.ein}}</p>
+        <p>City: {{nonprofit.city}}</p>
+    </div>
+    <div class="step1">
+        <p>Perform a search or two. These links will search Google and Facebook for the nonprofit's name + city. Adding the city tends to improve the search results</p>
+        <p>You are looking for the organization's web presence - a website or Facebook page managed by the group itself.</p>
+        <a href="https://www.google.com/search?q={{nonprofit.name|urlencode}}+{{nonprofit.city}}">Google Search</a>
+        <a href="https://www.facebook.com/search/top?q={{nonprofit.name|urlencode}}+{{nonprofit.city}}">Facebook Search</a>
+        <p>If you found a website or Facebook profile, please capture them here.</p>
+        <label for="website_url">Website URL: </label>
+        <input type="text" name="website_url" value="{{nonprofit.website_url}}">
+        <label for="facebook_url">Facebook URL: </label>
+        <input type="text" name="facebook_url" value="{{nonprofit.facebook_url}}">
+        <p>Based on what you saw, are they asking for volunteers?</p>
+        <p><label for="needs_volunteers">Needs volunteers:</label>
+        <input type="checkbox" name="needs_volunteers" id="needs_volunteers"></p>
+    </div>
+    <div class="step2">
+        <p>Have any questions? Are you unsure of your results? Check this box and we'll review mark the submission for further review.</p>
+        <p><label for="needs_review">Needs review:</label>
+        <input type="checkbox" name="needs_review" id="needs_review"></p>
+        <p>Finally, any comments?</p>
+        <textarea id="review_comment" name="review_comment">{{nonprofit.review_comment}}</textarea>
+        <input type="submit" value="Review">
+    </form>
+{% include "main/components/footer.html" %}
+{% endblock %}
