@@ -1,6 +1,15 @@
 {% extends "main/base.html" %}
 {% block content %}
 {% include "main/components/header.html" %}
+    {% if messages %}
+        <ul class="messages">
+            {% for message in messages %}
+            <li{% if message.tags %} class="{{message.tags}}"{% endif %}>
+                {{ message }}
+            </li>
+            {% endfor %}
+        </ul>
+    {% endif %}
     <form action="{% url 'review' nonprofit_id=nonprofit.id %}" method="post">
     {% csrf_token %}
     <div class="nonprofitdetails">

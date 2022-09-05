@@ -1,6 +1,7 @@
 from django.shortcuts import render, get_object_or_404
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
+from django.contrib import messages
 
 from .models import Nonprofit
 
@@ -25,5 +26,6 @@ def review(request, nonprofit_id):
     nonprofit.review_comment = request.POST['review_comment']
     nonprofit.complete = True
     nonprofit.save()
+    messages.success(request, 'Review submitted. Thank you!')
     next_nonprofit = get_nonprofit()
     return HttpResponseRedirect(reverse('detail', args=(next_nonprofit.id,)))
