@@ -1,0 +1,30 @@
+{% extends "main/base.html" %}
+{% block content %}
+    {% include "main/components/header.html" %}
+    {% if nonprofits %}
+        {% for nonprofit in nonprofits %}
+            <p>{{nonprofit.name}}</p>
+            <p>EIN: {{nonprofit.ein}}</p>
+            <p>City: {{nonprofit.city}}</p>
+            <a href="https://www.google.com/search?q={{nonprofit.name|urlencode}}+{{nonprofit.city}}">Google Search</a>
+            <a href="https://www.facebook.com/search/top?q={{nonprofit.name|urlencode}}+{{nonprofit.city}}">Facebook Search</a>
+            <form action="{% url 'review' nonprofit_id=nonprofit.id %}" method="post">
+                {% csrf_token %}
+                <fieldset>
+                    <p>Found Website?</p>
+                    <checkbox name="found_website"/>
+                    <p>Found Facebook?</p>
+                    <checkbox name="found_facebook"/>
+                    <p>Found Contact Info?</p>
+                    <p>Do they need volunteers?</p>
+                    <p>Comments</p>
+                    <p>Please Review</p>
+                </fieldset>
+                <input type="submit" value="Review">
+            </form>
+        {% endfor %}
+    {% else %}
+        <p>No items available</p>
+    {% endif %}
+    {% include "main/components/footer.html" %}
+{% endblock %}
