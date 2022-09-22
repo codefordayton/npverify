@@ -56,7 +56,7 @@ class RawNonprofit(models.Model):
     ruling = models.IntegerField(null=True)
     deductibility = models.IntegerField(null=True)
     foundation = models.IntegerField(null=True)
-    activity = models.IntegerField(null=True)
+    activity = models.CharField(max_length=20, null=True)
     organization = models.IntegerField(null=True)
     status = models.IntegerField(null=True)
     tax_period = models.IntegerField(null=True)
