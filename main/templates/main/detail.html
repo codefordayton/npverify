@@ -1,7 +1,7 @@
 {% extends "main/base.html" %}
 {% block content %}
 {% include "main/components/header.html" %}
- 
+
 {% if messages %}
     {% for message in messages %}
     <div {% if message.tags %} class="alert alert-{{message.tags}}"{% endif %}>
@@ -10,12 +10,12 @@
     {% endfor %}
 {% endif %}
 
-<div class="container">
+<div class="container px-10">
     <form action="{% url 'review' nonprofit_id=nonprofit.id %}" method="post">
     {% csrf_token %}
-    <div class="card nonprofitdetails">
+    <div class="card nonprofitdetails border-solid rounded-lg border-2 border-gray-300 p-3">
         <div class="card-body">
-            <h5 class="card-title">{{nonprofit.name}}</h5>
+            <h5 class="card-title text-3xl font-semibold">{{nonprofit.name}}</h5>
             <h6 class="card-subtitle mb-2 text-muted">
                 {{nonprofit.address}} {{nonprofit.city}}
             </h6>
@@ -25,35 +25,35 @@
             {% endif %}
         </div>
     </div>
-    <div class="card step1">
+    <div class="card step1 border-solid rounded-lg border-2 border-gray-300 p-3">
         <div class="card-body">
-            <h5 class="card-title">Does the nonprofit have a website?</h5>
+            <h5 class="card-title text-2xl font-medium">Does the nonprofit have a website?</h5>
             <p>The buttons below search Google and Facebook for the nonprofit's name + city.</p>
             <p>You are looking for the organization's web presence - a website or Facebook page managed by the group itself. There are a lot of sites that share registration information about the nonprofit, but these aren't what we are looking for.</p>
-            <a class="btn btn-secondary" target="_blank" href="https://www.google.com/search?q={{nonprofit.name|urlencode}}+{{nonprofit.city}}">Google Search</a>
-            <a class="btn btn-secondary" target="_blank" href="https://www.facebook.com/search/top?q={{nonprofit.name|urlencode}}+{{nonprofit.city}}">Facebook Search</a>
+            <a type="button" class="inline-block px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out" target="_blank" href="https://www.google.com/search?q={{nonprofit.name|urlencode}}+{{nonprofit.city}}">Google Search</a>
+            <a type="button" class="inline-block px-6 py-2.5 bg-gray-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-gray-700 hover:shadow-lg focus:bg-gray-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-gray-800 active:shadow-lg transition duration-150 ease-in-out" target="_blank" href="https://www.facebook.com/search/top?q={{nonprofit.name|urlencode}}+{{nonprofit.city}}">Facebook Search</a>
             <p>If you find a website or Facebook profile, please capture them here.</p>
             <label class="form-label" for="website_url">Website: </label>
-            <input class="form-control" type="text" name="website_url" value="{{nonprofit.website_url}}">
+            <input class="form-control block w-full border-solid rounded-lg border-2 border-gray-300" type="text" name="website_url" value="{{nonprofit.website_url}}">
             <label class="form-label" for="facebook_url">Facebook: </label>
-            <input class="form-control" type="text" name="facebook_url" value="{{nonprofit.facebook_url}}">
+            <input class="form-control block w-full border-solid rounded-lg border-2 border-gray-300" type="text" name="facebook_url" value="{{nonprofit.facebook_url}}">
             <p>If you've found a website, do they mention volunteering opportunities? <strong>We are only interested in nonprofits that do not require you to be a member to volunteer.</strong> This tends to rule out churches, unions, and other membership-based organizations.</p>
             <p><label class="form-check-label" for="needs_volunteers">Are they asking for volunteers?</label>
-            <input class="form-check-input" type="checkbox" name="needs_volunteers" id="needs_volunteers"></p>
+            <input class="form-check-input border-solid rounded border-2 border-gray-300" type="checkbox" name="needs_volunteers" id="needs_volunteers"></p>
         </div>
     </div>
-    <div class="card step2">
+    <div class="card step2 border-solid rounded-lg border-2 border-gray-300 p-3">
         <div class="card-body">
-            <h5 class="card-title">Submission</h5>
+            <h5 class="card-title text-2xl font-medium">Submission</h5>
             <p>Have any questions? Are you unsure of your results? Check this box and we'll mark the submission for further review.</p>
             <p><label class="form-check-label" for="needs_review">Please review:</label>
-            <input class="form-check-input" type="checkbox" name="needs_review" id="needs_review"></p>
+            <input class="form-check-input border-solid rounded border-2 border-gray-300" type="checkbox" name="needs_review" id="needs_review"></p>
             <p>Any comments?</p>
-            <textarea class="form-control" id="review_comment" name="review_comment">{{nonprofit.review_comment}}</textarea>
-            <input class="btn btn-primary btn-lg" type="submit" value="Submit">
+            <textarea class="form-control w-full border-solid rounded-lg border-2 border-gray-300 p-3" id="review_comment" name="review_comment">{{nonprofit.review_comment}}</textarea>
+            <input class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" type="submit" value="Submit">
         </div>
     </div>
     </form>
 </div>
 {% include "main/components/footer.html" %}
-{% endblock %}
+{% endblock content %}
