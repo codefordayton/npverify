@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/codefordayton/npverify#readme",
   "dependencies": {
-    "django": "4.1.1"
+    "django": "4.1.1",
+    "django-tailwind": "3.4.0"
   }
 }
