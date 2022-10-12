@@ -1,0 +1,22 @@
+{
+  "name": "npverify",
+  "version": "1.0.0",
+  "description": "Nonprofit verifier for Dayton Serves",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/codefordayton/npverify.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/codefordayton/npverify/issues"
+  },
+  "homepage": "https://github.com/codefordayton/npverify#readme",
+  "dependencies": {
+    "tailwindcss": "^3.1.6"
+  }
+}

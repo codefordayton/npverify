@@ -1,24 +1,23 @@
 {% extends "main/base.html" %}
 {% block content %}
     {% include "main/components/header.html" %}
-    <div class="container">
-    <h1>Nonprofit Verifier</h1>
-    <p><strong>TL;DR - Spend less than 5 minutes to check if a Dayton area nonprofit needs volunteers!</strong></p>
-    {% if nonprofit %}
-    <a class="btn btn-primary" href="{% url 'detail' nonprofit.id %}">Try one!</a>
-    {% endif %}
-    <p>Code For Dayton is partnering with <a href="https://daytonserves.org/">Dayton Serves</a> to make it easier to match nonprofits with volunteers. There are literally thousands of nonprofits in the Dayton area. A small percent of them want external volunteers. The primary purpose of this site is to find them so that we can highlight them.</p>
-    <p>A secondary purpose of the site is to find where <em>Code For Dayton</em> can help. We want to identify nonprofits that need help with websites and social media.</p>
-    <p>The process of verifying a nonprofit is simple. You'll perform a search and capture your results. Most nonprofits will probably take a minute or less.</p>
-    <p>Thank you in advance for your help!</p>
-    {% if nonprofit %}
-    <a class="btn btn-primary" href="{% url 'detail' nonprofit.id %}">Try one!</a>
-    {% endif %}
-
+    <div class="container px-10 space-y-4">
+        <h1 class="text-3xl font-semibold">Nonprofit Verifier</h1>
+        <p><strong>TL;DR - Spend less than 5 minutes to check if a Dayton area nonprofit needs volunteers!</strong></p>
+        {% if nonprofit %}
+        <a type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" href="{% url 'detail' nonprofit.id %}">Try one!</a>
+        {% endif %}
+        <p>Code For Dayton is partnering with <a class="text-blue-600 hover:text-blue-700 transition duration-300 ease-in-out" href="https://daytonserves.org/">Dayton Serves</a>
+            to make it easier to match nonprofits with volunteers. There are literally thousands of nonprofits in the Dayton area. A small percent of them want external volunteers. The primary purpose of this site is to find them so that we can highlight them.</p>
+        <p>A secondary purpose of the site is to find where <em>Code For Dayton</em> can help. We want to identify nonprofits that need help with websites and social media.</p>
+        <p>The process of verifying a nonprofit is simple. You'll perform a search and capture your results. Most nonprofits will probably take a minute or less.</p>
+        <p>Thank you in advance for your help!</p>
+        {% if nonprofit %}
+        <a type="button" class="inline-block px-6 py-2.5 bg-blue-600 text-white font-medium text-xs leading-tight uppercase rounded shadow-md hover:bg-blue-700 hover:shadow-lg focus:bg-blue-700 focus:shadow-lg focus:outline-none focus:ring-0 active:bg-blue-800 active:shadow-lg transition duration-150 ease-in-out" href="{% url 'detail' nonprofit.id %}">Try one!</a>
+        {% endif %}
     </div>
-
     <div>
-        <p>You can download the source file of nonprofits from <a href="https://drive.google.com/file/d/1w5rdD1S-9LoXnlYVO2inJN6_U5Puzv14/view?usp=sharing">here</a>.
+        <p>You can download the source file of nonprofits from <a class="text-blue-600 hover:text-blue-700 transition duration-300 ease-in-out" href="https://drive.google.com/file/d/1w5rdD1S-9LoXnlYVO2inJN6_U5Puzv14/view?usp=sharing">here</a>.
     </div>
     {% include "main/components/footer.html" %}
 {% endblock %}
