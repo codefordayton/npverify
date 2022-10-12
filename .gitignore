@@ -3,3 +3,4 @@
 staticfiles/
 *.swp
 *.log
+node_modules
