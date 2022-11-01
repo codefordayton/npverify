@@ -20,7 +20,7 @@ To get started:
   * `export DEBUG=True`
   * `export DEVELOPMENT_MODE=True`
 
-* Run `pip install -r requirements`.
+* Run `pip install -r requirements.txt`.
 
 * Run `python manage.py runserver` to start the debug server.
 
